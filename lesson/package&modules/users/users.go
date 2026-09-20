@@ -1,5 +1,5 @@
 package users
 
-func createUser(name string) string {
+func CreateUser(name string) string {
 	return name + " has been created"
 }

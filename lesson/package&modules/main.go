@@ -1,8 +1,10 @@
 package main
 import (
 	"github.com/atlas-devel/Go-Journey/users"
+	"fmt"
 )
 
 func main (){
-users.createUser("Atlas")
+var newUser string= users.CreateUser("Atlas")
+	fmt.Println(newUser)
 }

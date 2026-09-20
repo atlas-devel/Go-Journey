@@ -1,13 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
+	"github.com/atlas-devel/Go-Journey/builtin-methods/methods"
 )
 
 func main() {
-	x := "123"
-	y, err := strconv.Atoi(x)
-	fmt.Println(y,err)
+// methods.StringToInt("123534534")
+methods.StringMethods("atlas","devel")
+	
 
 }

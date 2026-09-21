@@ -1,10 +1,13 @@
 package main
 
 import (
-	"github.com/atlas-devel/Go-Journey/conditions-operatos/operators"
+	"github.com/atlas-devel/Go-Journey/conditions-operatos/conditions"
+	// "github.com/atlas-devel/Go-Journey/conditions-operatos/operators"
 )
 
 func main() {
-	operators.Operators()
+	// operators.Operators()
+	conditions.Conditions()
+	
 	
 }

@@ -3,11 +3,12 @@ package switchstatement
 import "fmt"
 
 func SwitchStatement() {
-	days:=""
+	days:="Monday"
 
 	switch days{
 	case "Monday":
 		fmt.Println("kuwa 1")
+		fallthrough
 	case "Tuesday":
 		fmt.Println("kuwa 2")
 	case "Wednesday":

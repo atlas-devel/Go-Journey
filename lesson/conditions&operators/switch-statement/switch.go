@@ -1,18 +1,29 @@
 package switchstatement
 
-func SwitchStatement() {
-	X := "Tuesday"
+import "fmt"
 
-	switch X {
+func SwitchStatement() {
+	days:="Monday"
+
+	switch days{
 	case "Monday":
-		println("Today is Monday")
+		fmt.Println("kuwa 1")
+		fallthrough
 	case "Tuesday":
-		println("Today is Tuesday")
+		fmt.Println("kuwa 2")
 	case "Wednesday":
-		println("Today is Wednesday")
+		fmt.Println("kuwa 3")
 	case "Thursday":
-		println("Today is Thursday")
+		fmt.Println("kuwa 4")
 	case "Friday":
-		println("Today is Friday")
+		fmt.Println("kuwa 5")
+	case "Saturday":
+		fmt.Println("kuwa 6")
+	case "Sunday":
+		fmt.Println("kucyumweru")
+	default:
+		fmt.Println("Please choose any day of the week")
 	}
+	
+	
 }

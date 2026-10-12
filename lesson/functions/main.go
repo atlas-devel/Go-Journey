@@ -1,15 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-func add(num1 uint, num2 uint) uint {
-	return num1 + num2
+	"github.com/atlas-devel/Go-Journey/funcs/helpers"
+)
 
-}
+
 
 func main() {
 
-	total := add(20, 3)
+	total := helpers.MakeAdd(helpers.Add,10,12)
 	fmt.Println(total)
 
 }

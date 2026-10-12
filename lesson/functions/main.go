@@ -9,6 +9,11 @@ import (
 
 func main() {
 
+	test:= func(){
+		fmt.Println("This is a test function")
+	}
+	test()
+
 	total := helpers.MakeAdd(helpers.Add, 10, 12)
 	fmt.Println(total)
 

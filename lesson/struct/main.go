@@ -11,10 +11,10 @@ type Person struct {
 func main() {
 
 	p1 := Person{
-		name: "Leon",
-		age: 22,
+		name:  "Leon",
+		age:   22,
 		email: "irakaramale@gmail.com",
 	}
-	fmt.Println(p1)
+	fmt.Println(p1.email)
 
 }

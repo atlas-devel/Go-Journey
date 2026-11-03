@@ -8,16 +8,43 @@ type Student struct {
 	Grade string
 }
 
-func main() {
 
-	st1 := Student{
+func (s Student)getStudentDataByName(name string)Student{
+	dummyData:=[]Student{
+	{
 		Name:  "Eric",
 		Age:   19,
 		Grade: "A",
-	}
+	},
+	{
+		Name:  "Amina",
+		Age:   22,
+		Grade: "B",
+	},{
+		Name:  "Assa",
+		Age:   21,
+		Grade: "C",
+	},
+}
+	var result Student
 
-	fmt.Printf("Student name is %s\n",st1.Name)
-	fmt.Printf("%s is %d old\n",st1.Name,st1.Age)
-	fmt.Printf("he/she is in Grade  %s\n",st1.Grade)
+	for _,value:=range dummyData{
+		if value.Name==name{
+			result=value
+		}
+	}
+return result
+
+}
+
+func main() {
+
+
+
+	st1 := Student{}
+	
+	personData:=st1.getStudentDataByName("Amina")
+	fmt.Println(personData)
+
 
 }

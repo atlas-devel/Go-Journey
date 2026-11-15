@@ -1,7 +1,7 @@
 package main
 
 import (
-	 "fmt"
+	"fmt"
 
 	"github.com/atlas-devel/Go-Journey/challenges/LMS/models"
 	"github.com/atlas-devel/Go-Journey/challenges/LMS/services"
@@ -16,13 +16,22 @@ func main() {
 		Borrowed: 0,
 	}
 
-	book.AddCopies(4)
+
+
+	if err:=book.AddCopies(02);err!=nil{
+		fmt.Println(err)
+	}
+		if err:=book.BorrowBook(20);err!=nil{
+		fmt.Println(err)
+	}
+		if err:=book.ReturnBook(1);err!=nil{
+		fmt.Println(err)
+	}
+
 	fmt.Println(book.Copies)
+
 	
-	book.BorrowBook(-1)
-	book.ReturnBook(1)
-	fmt.Println(book.Borrowed)
-	fmt.Println(book.Copies)
+	
 
 
 

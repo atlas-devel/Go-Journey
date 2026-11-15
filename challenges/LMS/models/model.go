@@ -1,6 +1,9 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+"errors"
+)
 
 type Book struct {
 	Title  string
@@ -12,39 +15,42 @@ type Book struct {
 
 
 
-func (b *Book) AddCopies(quantity int) {
+func (b *Book) AddCopies(quantity int) error {
 	if quantity <= 0 {
-		fmt.Println("Insuffient Copies")
-		return
+		
+		return fmt.Errorf("quantity must be greater than zero and your are trying to add %d",quantity)
 	}
 	b.Copies+=quantity
-	
+	return  nil
 }
-func(b *Book) BorrowBook(quantity int)    {
+
+func(b *Book) BorrowBook(quantity int) error    {
 	switch {
 	case quantity>b.Copies:
-		fmt.Println("Books not available")
-		return
+		return fmt.Errorf("cannot borrow %d books: only %d available",quantity,b.Copies)
 	case quantity<=0:
-		fmt.Println("Insufficient Quantity")
-		return
+		return errors.New("Insufficient Quantity")
+		
 	}
 	b.Copies-=quantity
 	b.Borrowed+=quantity
+
+	return nil
 	
 
 }
-func (b *Book) ReturnBook(quantity int)     {
+func (b *Book) ReturnBook(quantity int)  error   {
 	switch{
 	case quantity>b.Borrowed:
-		fmt.Println("Maximum book return exceed")
-		return
+		return errors.New("Maximum book return exceed")
+		
 	case quantity<=0:
-		fmt.Println("Insufficient Return")
-		return
-
+		return errors.New("Insufficient Return")
+		
 	}
 	b.Copies+=quantity
 	b.Borrowed-=quantity
+
+	return nil
 	
 }

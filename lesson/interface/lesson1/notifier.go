@@ -1,5 +1,5 @@
 package main
 
 type Notifier interface{
-	send(message string)
+	Send(message string)
 }

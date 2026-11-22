@@ -65,16 +65,24 @@ func HandleOption(option int) {
 		fmt.Scanln(&product_to_sell)
 		fmt.Print("Enter the quantity to sell: ")
 		fmt.Scanln(&quantity)
-		models.Store{}.SellProduct(product_to_sell, quantity)
-		fmt.Printf("%s sold successfully\n", product_to_sell)
+		err := models.Store{}.SellProduct(product_to_sell, quantity)
+		if err != nil {
+			fmt.Println("Error selling product:", err)
+		} else {
+			fmt.Printf("%s sold successfully\n", product_to_sell)
+		}
 
 	case 6:
 		// Remove product
 		fmt.Print("Enter the product ID to remove: ")
 		var productID int
 		fmt.Scanln(&productID)
-		models.Store{}.RemoveProductById(productID)
-		fmt.Printf("Product with ID %d removed successfully\n", productID)
+		err := models.Store{}.RemoveProductById(productID)
+		if err != nil {
+			fmt.Println("Error removing product:", err)
+		} else {
+			fmt.Printf("Product with ID %d removed successfully\n", productID)
+		}
 
 	case 7:
 		// Inventory value
@@ -84,6 +92,9 @@ func HandleOption(option int) {
 		// Low-stock report
 		fmt.Print("Products with low stock:\n")
 		lowStockProducts, err := models.Store{}.GetProductBelowQuantity(5)
+		if len( lowStockProducts )==0 {
+			fmt.Println("No products with low stock.")
+		}
 		if err != nil {
 			fmt.Println("Error fetching low stock products:", err)
 		} else {

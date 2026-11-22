@@ -5,13 +5,18 @@ import (
 	"strings"
 
 	dataStorage "github.com/atlas-devel/Go-Journey/challenges/final-fundamental-challenge/store"
+	"github.com/atlas-devel/Go-Journey/challenges/final-fundamental-challenge/validators"
 )
 
 type Store struct{}
 
 func (i Store) AddProductToStock(name string, quantity int) error {
-	if int(quantity) <= 0 {
-		return errors.New("Quantity must be greater than zero")
+	isValid, err := validators.QuantityValidator(quantity)
+	if err != nil {
+		return err
+	}
+	if !isValid {
+		return errors.New("Invalid quantity")
 	}
 
 	for index := range dataStorage.Products {
@@ -34,32 +39,40 @@ func (i Store) GetProductByID(id int) (dataStorage.Product, error) {
 	return dataStorage.Product{}, errors.New("Product not found")
 }
 
-func (i Store) SellProduct(name string, quantity int) (string, error) {
-	for _, item := range dataStorage.Products {
+func (i Store) SellProduct(name string, quantity int)  error {
+	isValid, err := validators.QuantityValidator(quantity)
+	if err != nil {
+		return err
+	}
+	if !isValid {
+		return errors.New("Invalid quantity")
+	}
+
+	for index, item := range dataStorage.Products {
 		if item.Name == name {
 			if item.Stock >= quantity {
-				item.Stock -= quantity
-				return "Product sold successfully", nil
+				dataStorage.Products[index].Stock -= quantity
+				return  nil
 			} else {
-				return "Insufficient stock", errors.New("Insufficient stock")
+				return  errors.New("Insufficient stock")
 			}
 		}
 	}
-	return "Product not found", errors.New("Product not found")
+	return  errors.New("Product not found")
 }
 
 func (i Store) GetAllProducts() []dataStorage.Product {
 	return dataStorage.Products
 }
 
-func (i Store) RemoveProductById(id int) (string, error) {
+func (i Store) RemoveProductById(id int)  error {
 	for index, item := range dataStorage.Products {
 		if item.ID == id {
 			dataStorage.Products = append(dataStorage.Products[:index], dataStorage.Products[index+1:]...)
-			return "Product removed successfully", nil
+			return  nil
 		}
 	}
-	return "Product not found", errors.New("Product not found")
+	return  errors.New("Product not found")
 }
 
 func (i Store) GetLowestPriceProduct() (dataStorage.Product, error) {

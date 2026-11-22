@@ -16,3 +16,10 @@ func ValidateProduct(name string, price float64) (bool, error) {
 	return true, nil
 
 }
+
+func QuantityValidator(quantity int) (bool, error) {
+	if quantity <= 0 {
+		return false, errors.New("Quantity must be greater than zero")
+	}
+	return true, nil
+}

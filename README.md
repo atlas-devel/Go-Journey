@@ -33,8 +33,12 @@ This repository contains my notes, exercises, examples, and small projects as I 
 - [x] Structs
 - [x] Pointers
 - [x] Methods
-- [X] Interfaces
+- [x] Interfaces
 - [x] Error handling
+- [x] Go Final Fundamental Challenge
+
+## Go Backend Engineering
+
 - [ ] Concurrency
   - [ ] Goroutines
   - [ ] Channels
